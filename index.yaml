@@ -1,0 +1,12 @@
+apiVersion: v1
+entries:
+  bits:
+  - apiVersion: v1
+    created: "2020-05-05T19:07:50.006842683Z"
+    description: A Helm chart for CloudFoundry/bits-service
+    digest: 9d2184d5f942e758c7ff65a2982b14135d75375ce287093e3234cb387d19640e
+    name: bits
+    urls:
+    - https://github.com/SUSE/bits-service-release/releases/download/bits-1.0.14/bits-1.0.14.tgz
+    version: 1.0.14
+generated: "2020-05-05T19:07:49.833595589Z"
