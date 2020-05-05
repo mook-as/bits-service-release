@@ -147,12 +147,15 @@ spec:
           mountPath: /workspace/jobs/bits-service/config
         - name: bits-cert
           mountPath: /workspace/jobs/bits-service/certs
+        {{- if .Values.download_eirinifs }}
         - name: bits-assets
           mountPath: /assets/
+        {{ end }}
         resources:
           requests:
             cpu: 800m
             memory: 150Mi
+      {{- if .Values.download_eirinifs }}
       initContainers:
       - name: "download-eirini-rootfs"
         image: {{ .Values.global.images.rootfs_downloader }}
@@ -175,6 +178,7 @@ spec:
             memory: 50Mi
       securityContext:
         runAsNonRoot: true
+      {{ end }}
 
 # Service
 ---
