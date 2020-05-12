@@ -1,9 +1,10 @@
 ---
 apiVersion: v1
-kind: ConfigMap
+kind: Secret
 metadata:
   name: bits
-data:
+type: Opaque
+stringData:
   bits-config-key: |
     logging:
       level: debug

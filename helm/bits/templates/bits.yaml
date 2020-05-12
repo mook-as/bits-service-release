@@ -32,8 +32,8 @@ spec:
       dnsPolicy: "ClusterFirst"
       volumes:
         - name: bits-config
-          configMap:
-            name: "bits"
+          secret:
+            secretName: "bits"
             items:
             - key: bits-config-key
               path: bits-service.yml
