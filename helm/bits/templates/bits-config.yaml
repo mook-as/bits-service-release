@@ -23,8 +23,8 @@ stringData:
     {{- else }}
     registry_endpoint: "https://registry.{{ index .Values.kube.external_ips 0 }}.nip.io"
     {{- end }}
-    cert_file: /workspace/jobs/bits-service/certs/{{ if index .Values "tls_cert_name" }}{{ .Values.tls_cert_name }}{{ else }}{{ "tls.crt" }}{{ end }}
-    key_file: /workspace/jobs/bits-service/certs/{{ if index .Values "tls_key_name" }}{{ .Values.tls_key_name }}{{ else }}{{ "tls.key" }}{{ end }}
+    cert_file: /workspace/jobs/bits-service/certs/{{ index .Values "tls_cert_name" | default "tls.crt" }}
+    key_file: /workspace/jobs/bits-service/certs/{{ index .Values "tls_key_name" | default "tls.key" }}
     port: 6666
     enable_http: true
     http_port: 8888
@@ -37,13 +37,7 @@ stringData:
     app_stash_config:
       maximum_size: 512M
       minimum_size: 64K
-    {{- $hasBitsBlobstore := false }}
-    {{- if .Values.bits }}
-      {{- if.Values.bits.blobstore_config }}
-        {{- $hasBitsBlobstore = true }}
-      {{- end }}
-    {{- end }}
-    {{- if $hasBitsBlobstore }}
+    {{- if index (default (dict) .Values.bits) "blobstore_config" }}
     buildpacks: {{ .Values.bits.blobstore_config.buildpacks | toJson }}
     droplets: {{ .Values.bits.blobstore_config.droplets | toJson }}
     packages: {{ .Values.bits.blobstore_config.packages | toJson }}
@@ -64,7 +58,7 @@ stringData:
         username: {{ .Values.blobstore.userName }}
         password: {{ .Values.secrets.BLOBSTORE_PASSWORD  }}
         # TODO: provide proper cert file here
-        ca_cert_path: /workspace/jobs/bits-service/certs/{{ if index .Values "tls_ca_name" }}{{ .Values.tls_ca_name }}{{ else }}{{ "tls.crt" }}{{ end }}
+        ca_cert_path: /workspace/jobs/bits-service/certs/{{ index .Values "tls_ca_name" | default "tls.crt" }}
         # TODO: remove this skip, when we have propert cert file above
         skip_cert_verify: true
     droplets:
