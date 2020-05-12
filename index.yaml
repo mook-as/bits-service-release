@@ -2,19 +2,11 @@ apiVersion: v1
 entries:
   bits:
   - apiVersion: v1
-    created: "2020-05-06T16:19:31.268692058Z"
+    created: "2020-05-12T22:54:20.865975147Z"
     description: A Helm chart for CloudFoundry/bits-service
-    digest: 6078ceb56d1b2778f417a6fb52fab5ca7b8da2694fb6b91e6a20a28617397a1b
+    digest: 70a6eda3914fd6d52aacf544459665042ffdd2e156b9e45bcb79e901c22cf945
     name: bits
     urls:
-    - https://github.com/SUSE/bits-service-release/releases/download/bits-1.0.15/bits-1.0.15.tgz
-    version: 1.0.15
-  - apiVersion: v1
-    created: "2020-05-05T19:07:50.006842683Z"
-    description: A Helm chart for CloudFoundry/bits-service
-    digest: 9d2184d5f942e758c7ff65a2982b14135d75375ce287093e3234cb387d19640e
-    name: bits
-    urls:
-    - https://github.com/SUSE/bits-service-release/releases/download/bits-1.0.14/bits-1.0.14.tgz
-    version: 1.0.14
-generated: "2020-05-05T19:07:49.833595589Z"
+    - https://github.com/mook-as/bits-service-release/releases/download/bits-1.0.1/bits-1.0.1.tgz
+    version: 1.0.1
+generated: "2020-05-12T22:54:20.758263325Z"
